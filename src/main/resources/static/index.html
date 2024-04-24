@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Carpooling System</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <base href="/"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for Language Switching -->
+    <script>
+        function switchLanguage(language) {
+            document.getElementById('regNameLabel').innerText = language === 'en' ? 'Name:' : 'Jina:';
+            document.getElementById('regContactLabel').innerText = language === 'en' ? 'Contact Details:' : 'Mawasiliano:';
+            document.getElementById('regSubmit').value = language === 'en' ? 'Register' : 'Jiandikishe';
+
+            document.getElementById('loginNameLabel').innerText = language === 'en' ? 'Name:' : 'Jina:';
+            document.getElementById('loginContactLabel').innerText = language === 'en' ? 'Contact Details:' : 'Mawasiliano:';
+            document.getElementById('loginSubmit').value = language === 'en' ? 'Login' : 'Ingia';
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>Carpooling System</h1>
+
+    <!-- Language Selection -->
+    <label for="languageSelect">Select Language:</label>
+    <select id="languageSelect" onchange="switchLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="sw">Kiswahili</option>
+    </select>
+
+    <!-- User Registration Form -->
+    <h2>User Registration</h2>
+    <form action="/api/users/register" method="post">
+        <label id="regNameLabel" for="regName">Name:</label>
+        <input type="text" id="regName" name="name" required><br>
+
+        <label id="regContactLabel" for="regContact">Contact Details:</label>
+        <input type="text" id="regContact" name="contactDetails" required><br>
+
+        <input id="regSubmit" type="submit" value="Register">
+    </form>
+
+    <!-- User Login Form -->
+    <h2>User Login</h2>
+    <form action="/api/users/login" method="post">
+        <label id="loginNameLabel" for="loginName">Name:</label>
+        <input type="text" id="loginName" name="name" required><br>
+
+        <label id="loginContactLabel" for="loginContact">Contact Details:</label>
+        <input type="text" id="loginContact" name="contactDetails" required><br>
+
+        <input id="loginSubmit" type="submit" value="Login">
+    </form>
+</div>
+</body>
+</html>
